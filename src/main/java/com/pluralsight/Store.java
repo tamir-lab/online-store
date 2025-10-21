@@ -1,12 +1,12 @@
 package com.pluralsight;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-/**
- * Starter code for the Online Store workshop.
- * Students will complete the TODO sections to make the program work.
- */
 public class Store {
 
     public static void main(String[] args) {
@@ -54,9 +54,20 @@ public class Store {
      * Example line:
      * A17|Wireless Mouse|19.99
      */
-    public static void loadInventory(String fileName, ArrayList<Product> inventory) {
-        // TODO: read each line, split on "|",
-        //       create a Product object, and add it to the inventory list
+    public static void loadInventory(String fileName, ArrayList<Product> inventory)   {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileName));
+            String line;
+            while((line = br.readLine()) != null){
+                String[] parts = line.split("\\|");
+                String sku = parts[0];
+                String productName = parts[1];
+                double price = Double.parseDouble(parts[2]);
+                inventory.add(new Product(sku,productName,price));
+            } br.close();
+        } catch (Exception e) {
+            System.out.println("Something went wrong while loading the inventory");
+        }
     }
 
     /**
@@ -66,10 +77,48 @@ public class Store {
     public static void displayProducts(ArrayList<Product> inventory,
                                        ArrayList<Product> cart,
                                        Scanner scanner) {
-        // TODO: show each product (id, name, price),
-        //       prompt for an id, find that product, add to cart
-    }
+        System.out.println("SKU|Product name|Price");
+        for (Product product : inventory) {
+            System.out.println(product);
+        }
+        int choice = -1;
+        boolean running = true;
+        while (running) {
+            System.out.println("============================" +
+                    "\n1.Add product to the cart." +
+                    "\n2.Return to the home screen.");
 
+            if (!scanner.hasNextInt()) {
+                System.out.println("Please enter 1 or 2");
+                scanner.nextLine();                 // discard bad input
+                continue;
+            }
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> {
+                    System.out.print("Enter SKU of the product: ");
+                    String id = scanner.nextLine().trim();
+                    int i = 0;
+                    for (Product product : inventory) {
+                        if (id.equalsIgnoreCase(product.getSku())) {
+                            i ++;
+                            cart.add(product);
+                            System.out.printf("You added %s to the cart", product);
+                            System.out.println("\n");
+                        }
+                    }
+                    if (i == 0) {
+                        System.out.println("We don't carry this product");
+                    }
+                }
+                case 2 -> running = false;
+                default -> System.out.println("Enter 1 or 2");
+            }
+
+        }
+    }
     /**
      * Shows the contents of the cart, calculates the total,
      * and offers the option to check out.
@@ -80,6 +129,29 @@ public class Store {
         //   • compute the total cost
         //   • ask the user whether to check out (C) or return (X)
         //   • if C, call checkOut(cart, totalAmount, scanner)
+        for (Product product : cart) System.out.println(product);
+        double totalAmount = 0;
+        for (Product product : cart) {
+            totalAmount += product.getPrice();
+        }
+        System.out.println("Your total is " + totalAmount);
+
+        String choice ="";
+        while (!choice.equalsIgnoreCase("x")) {
+            System.out.println("\n============================");
+            System.out.println("C - Check out");
+            System.out.println("X - Return");
+            System.out.print("Your choice: ");
+
+            choice = scanner.nextLine();
+
+            if (choice.equalsIgnoreCase("c")) {
+                checkOut(cart,);
+            } else {
+                System.out.println("Please enter C or X");
+            }
+        }
+
     }
 
     /**
