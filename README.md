@@ -3,13 +3,20 @@
 ## Description of the Project
 
 This application is designed for people that are interested in simple CLI online shops.
+It allows a user to view the products, view the cart, add/remove products to the cart and check out the cart.
+
 
 ## User Stories
 
 List the user stories that guided the development of your application. Format these stories as: "As a [type of user], I want [some goal] so that [some reason]."
 
-- As a user, I want to be able to input my data, so that the application can process it accordingly.
-- As a user, I want to receive immediate feedback, so I can understand what to do next.
+- As a User I want to view all products, so it's easier to choose.
+- As a User I want to be able to add the products to the cart from view of all products, so I can save my choice
+- As a User I want to be able to exit the app, so I can stop using it
+- As a User I want to be able to view the cart, so I can check what I added to the cart
+- As a User I want to be able to go back to the home screen from the cart, so I can keep shopping
+- As a User I want to be able to go back to home screen from view all of products
+- As a User I want to be able to check out the cart, so I can complete the order
 
 ## Setup
 
@@ -32,37 +39,32 @@ Follow these steps to get your application running within IntelliJ IDEA:
 
 ## Technologies Used
 
-- Java: Mention the version you are using.
-- Any additional libraries or frameworks used in the project.
+- Java 17
+- IntelliJ IDEA
 
 ## Demo
 
-Include screenshots or GIFs that show your application in action. Use tools like [Giphy Capture](https://giphy.com/apps/giphycapture) to record a GIF of your application.
 
-![Application Screenshot](path/to/your/screenshot.png)
+Home screen displaying product options and user menu.
+![Application Screenshot](Screenshot%202025-10-22%20160651.png)
 
 ## Future Work
 
-Outline potential future enhancements or functionalities you might consider adding:
 
-- Additional feature to be developed.
+- Removing the product from the cart by sku from display the cart.
 - Improvement of current functionalities.
+- Add automated tests.
 
 ## Resources
 
-List resources such as tutorials, articles, or documentation that helped you during the project.
 
-- [Java Programming Tutorial](https://www.example.com)
-- [Effective Java](https://www.example.com)
+- Pluralsight Workbook
+- Potato Sensei's Skeleton
 
 ## Team Members
 
-- **Name 1** - Specific contributions or roles.
-- **Name 2** - Specific contributions or roles.
+- Tamir, Java developer.
 
 ## Thanks
 
-Express gratitude towards those who provided help, guidance, or resources:
-
-- Thank you to [Mentor's Name] for continuous support and guidance.
-- A special thanks to all teammates for their dedication and teamwork.
+- Thank you to Potato Sensei.
