@@ -39,7 +39,7 @@ public class Product {
     public String toString() {
         return
                 id + '|' +
-                productName + '|' +
-                price + '|';
+                        productName + '|' +
+                        price + '|';
     }
 }

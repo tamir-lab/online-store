@@ -1,8 +1,8 @@
-# Project Title
+# Online Store
 
 ## Description of the Project
 
-Briefly describe what this Java console application does. Mention its purpose and who the intended users are. Explain the main functionality and what problems it aims to solve.
+This application is designed for people that are interested in simple CLI online shops.
 
 ## User Stories
 
