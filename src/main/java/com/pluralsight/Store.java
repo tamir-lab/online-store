@@ -1,9 +1,7 @@
 package com.pluralsight;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -82,12 +80,16 @@ public class Store {
         for (Product product : inventory) {
             System.out.println(product);
         }
-        int choice = -1;
+        int choice;
         boolean running = true;
         while (running) {
-            System.out.println("============================" +
-                    "\n1.Add product to the cart." +
-                    "\n2.Return to the home screen.");
+            System.out.println("""
+                   
+                    ============================\
+                    
+                    1.Add product to the cart.\
+                    
+                    2.Return to the home screen.""");
 
             if (!scanner.hasNextInt()) {
                 System.out.println("Please enter 1 or 2");
@@ -130,7 +132,10 @@ public class Store {
         //   • compute the total cost
         //   • ask the user whether to check out (C) or return (X)
         //   • if C, call checkOut(cart, totalAmount, scanner)
-        for (Product product : cart) System.out.println(product);
+        for (Product product : cart) {
+            System.out.println(product);
+        }
+
         double totalAmount = 0;
         for (Product product : cart) {
             totalAmount += product.getPrice();
@@ -171,9 +176,6 @@ public class Store {
         // TODO: implement steps listed above
         String confirm = "";
         while (!confirm.equalsIgnoreCase("x")) {
-            //System.out.println("C - Confirm the check out");
-            //System.out.println("X - Keep shopping");
-            //confirm = scanner.nextLine();
             System.out.println("\n============================");
             System.out.println("C - Confirm the check out");
             System.out.println("X - Keep shopping");
@@ -183,7 +185,7 @@ public class Store {
 
             if (confirm.equalsIgnoreCase("c")) {
                 System.out.println("Enter the payment amount:");
-                double payment = 0;
+                double payment;
 
 
 
@@ -223,8 +225,9 @@ public class Store {
      */
     public static Product findProductById(String id, ArrayList<Product> inventory) {
         // TODO: loop over the list and compare ids
+
         for (Product product : inventory) {
-            
+
         }
         return null;
     }
